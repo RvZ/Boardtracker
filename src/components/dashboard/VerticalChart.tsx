@@ -55,8 +55,8 @@ export default function VerticalChart({ days }: VerticalChartProps) {
 
   const chartData = days.map((day) => ({
     id: day.id,
-    date: formatDate(day.date, 'short'),
-    vertical: day.verticalMeters,
+    date: formatDate(day.date),
+    vertical: day.totalVerticalMeters,
     resort: day.resort,
   }));
 
@@ -73,7 +73,7 @@ export default function VerticalChart({ days }: VerticalChartProps) {
       <BarChart
         data={chartData}
         margin={{ top: 8, right: 8, bottom: 0, left: -12 }}
-        onClick={(state) => {
+        onClick={(state: any) => {
           if (state?.activePayload?.[0]?.payload) {
             handleBarClick(state.activePayload[0].payload as ChartPayload);
           }
@@ -94,8 +94,8 @@ export default function VerticalChart({ days }: VerticalChartProps) {
         />
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
         <Bar dataKey="vertical" radius={[4, 4, 0, 0]} cursor="pointer">
-          {chartData.map((entry) => (
-            <Cell key={entry.id} fill={getResortColor(entry.resort)} />
+          {chartData.map((entry, index) => (
+            <Cell key={entry.id} fill={getResortColor(index)} />
           ))}
         </Bar>
       </BarChart>
