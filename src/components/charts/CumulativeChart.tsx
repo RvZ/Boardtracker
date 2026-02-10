@@ -60,8 +60,8 @@ export default function CumulativeChart({ data }: CumulativeChartProps) {
             color: '#dce4f5',
             fontSize: 13,
           }}
-          labelFormatter={formatDate}
-          formatter={(value: number, name: string) => {
+          labelFormatter={(label: any) => formatDate(String(label))}
+          formatter={(value: any, name: any) => {
             if (name === 'Vertical') return [`${formatNumber(Math.round(value))} m`, name];
             return [`${formatDecimal(value)} km`, name];
           }}

@@ -13,19 +13,9 @@ interface ResortPieChartProps {
   resorts: Resort[];
 }
 
-interface LabelProps {
-  cx: number;
-  cy: number;
-  midAngle: number;
-  innerRadius: number;
-  outerRadius: number;
-  name: string;
-  percent: number;
-}
-
 const RADIAN = Math.PI / 180;
 
-function renderLabel({ cx, cy, midAngle, innerRadius, outerRadius, name, percent }: LabelProps) {
+function renderLabel({ cx, cy, midAngle, outerRadius, name, percent }: any) {
   if (percent < 0.05) return null;
   const radius = outerRadius + 24;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -63,7 +53,7 @@ export default function ResortPieChart({ resorts }: ResortPieChartProps) {
           innerRadius={45}
           dataKey="value"
           nameKey="name"
-          label={renderLabel}
+          label={renderLabel as any}
           labelLine={{ stroke: 'rgba(255,255,255,0.2)', strokeWidth: 1 }}
           strokeWidth={1}
           stroke="rgba(0,0,0,0.3)"
@@ -80,7 +70,7 @@ export default function ResortPieChart({ resorts }: ResortPieChartProps) {
             color: '#dce4f5',
             fontSize: 13,
           }}
-          formatter={(value: number, _name: string, props: { payload: { name: string; vertical: number } }) => [
+          formatter={(value: any, _name: any, props: any) => [
             `${value} day${value !== 1 ? 's' : ''} — ${formatNumber(props.payload.vertical)} m vertical`,
             props.payload.name,
           ]}

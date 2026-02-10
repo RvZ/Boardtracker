@@ -13,7 +13,7 @@ export default function SeasonTimeline({ days, onDayClick }: SeasonTimelineProps
   return (
     <div className="flex overflow-x-auto gap-3 pb-2 scrollbar-thin">
       {days.map((day, index) => {
-        const resortColor = getResortColor(day.resort);
+        const resortColor = getResortColor(index);
 
         return (
           <motion.button
@@ -25,7 +25,7 @@ export default function SeasonTimeline({ days, onDayClick }: SeasonTimelineProps
             className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/5 px-4 py-3 transition-colors hover:border-white/15 hover:bg-white/10 shrink-0 min-w-[100px] cursor-pointer"
           >
             <span className="text-xs text-snow-200/50 whitespace-nowrap">
-              {formatDate(day.date, 'short')}
+              {formatDate(day.date)}
             </span>
 
             <span
@@ -34,7 +34,7 @@ export default function SeasonTimeline({ days, onDayClick }: SeasonTimelineProps
             />
 
             <span className="text-sm font-semibold text-white">
-              {formatNumber(day.verticalMeters)}m
+              {formatNumber(day.totalVerticalMeters)}m
             </span>
 
             <span

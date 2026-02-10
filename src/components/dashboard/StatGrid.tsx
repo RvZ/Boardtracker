@@ -13,7 +13,7 @@ export default function StatGrid({ stats }: StatGridProps) {
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       <StatCard
         icon={Mountain}
-        value={stats.totalVertical}
+        value={stats.totalVerticalMeters}
         label="Total Vertical"
         suffix="m"
         color={CHART_COLORS.pine}
@@ -21,7 +21,7 @@ export default function StatGrid({ stats }: StatGridProps) {
       />
       <StatCard
         icon={MapPin}
-        value={stats.totalDistance}
+        value={stats.totalDistanceKm}
         label="Total Distance"
         suffix="km"
         decimals={1}
