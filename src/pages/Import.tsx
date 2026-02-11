@@ -118,7 +118,11 @@ export default function Import() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (file) {
-        processFile(file);
+        if (!file.name.endsWith('.csv') && !file.type.includes('csv') && !file.type.includes('text')) {
+          setError('Please select a .csv or text file.');
+        } else {
+          processFile(file);
+        }
       }
       e.target.value = '';
     },
@@ -239,7 +243,6 @@ export default function Import() {
             <input
               ref={fileInputRef}
               type="file"
-              accept=".csv,text/csv,text/comma-separated-values,application/csv,text/plain,*/*"
               onChange={handleFileChange}
               className="hidden"
             />
