@@ -16,7 +16,7 @@ describe('RESORT_DATA', () => {
   });
 
   it('all resorts have valid coordinates', () => {
-    for (const [id, resort] of Object.entries(RESORT_DATA)) {
+    for (const [, resort] of Object.entries(RESORT_DATA)) {
       expect(resort.name).toBeTruthy();
       expect(resort.country).toBeTruthy();
       expect(typeof resort.lat).toBe('number');

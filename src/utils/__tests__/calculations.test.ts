@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { calculateSeasonStats, getCumulativeData, getDayAltitudeProfile } from '../calculations';
 import { DEMO_SEASON } from '../../data/demoData';
-import type { Season, SkiDay } from '../../types';
+import type { Season } from '../../types';
 
 describe('calculateSeasonStats', () => {
   it('calculates totals for demo season', () => {
