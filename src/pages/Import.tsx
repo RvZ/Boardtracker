@@ -239,7 +239,7 @@ export default function Import() {
             <input
               ref={fileInputRef}
               type="file"
-              accept=".csv"
+              accept=".csv,text/csv,text/comma-separated-values,application/csv,text/plain,*/*"
               onChange={handleFileChange}
               className="hidden"
             />
